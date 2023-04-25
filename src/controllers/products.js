@@ -10,6 +10,29 @@ async function get(req, res){
     res.send(products)
 }
 
+async function post(req, res){
+    const {
+        name,
+        brand,
+        price
+    } = req.body
+
+    console.log(req.body)
+
+    const register = new ProductsModel({
+        name,
+        brand,
+        price
+    })
+
+    register.save()
+
+    res.send({
+        message: "Success"
+    })
+}
+
 module.exports = {
-    get
+    get,
+    post
 }
